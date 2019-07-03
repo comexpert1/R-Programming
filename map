@@ -1,0 +1,67 @@
+# 패키지설치
+install.packages("ggiraphExtra")
+library(ggiraphExtra)
+
+# 미국주별범죄데이터준비
+# r에내장된USArrests데이터는1973년미국주별강력범죄율정보임
+str(USArrests)
+head(USArrests)
+library(tibble)
+
+# 행이름을state 변수로바꿔데이터프레임생성
+crime <-rownames_to_column(USArrests, var= "state")
+crime
+
+# 지도데이터와동일하게맞추기위해state의값을소문자로수정
+crime$state<-tolower(crime$state)
+crime
+str(crime)
+
+## 미국주지도데이터준비하기
+# 단계구분도를만들기위해선지역별위도, 경도정보가있는지도가필요
+# R의maps 패키지에미국주별위경도를나타낸state 데이터가있음
+library(ggplot2)
+install.packages("maps")
+install.packages("mapproj")
+states_map<-map_data("state")
+str(states_map)
+## 단계구분도
+ggChoropleth(data = crime,                           # 지도에표현할데이터
+             aes(fill = Murder,                      # 색깔로표현할변수
+                 map_id= state),                     # 지역기준변수
+             map = states_map)                       # 지도데이터
+# 인터랙티브단계구분도
+ggChoropleth(data = crime,                           # 지도에표현할데이터
+             aes(fill = Murder,                      # 색깔로표현할변수
+                 map_id= state),                     # 지역기준변수
+             map = states_map,                       # 지도데이터
+             interactive = T)                        # 인터랙티브
+
+# 대한민국시도별인구, 결핵환자수단계구분도만들기
+install.packages("stringi")
+
+# devtools는깃허브에공유된패키지를사용할수있음
+install.packages("devtools")
+
+# kormaps2014 패키지에는몇가지지역별통계정보가포함됨
+devtools::install_github("cardiomoon/kormaps2014")
+library(kormaps2014)
+library(ggiraphExtra)
+str(changeCode(korpop1))
+str(changeCode(kormap1))
+
+ggChoropleth(data = korpop1,                        # 지도에표현할데이터
+             aes(fill = 총인구_명,                  # 색깔로표현할변수
+                 map_id = code,                     # 지역기준변수
+                 tooltip = 행정구역별_읍면동),      # 지도위에표시할지역명
+             map = kormap1,                         # 지도데이터
+             interactive = T)                       # 인터랙티브
+
+str(changeCode(tbc))
+
+ggChoropleth(data = tbc,                            # 지도에표현할데이터
+             aes(fill = NewPts,                     # 색깔로표현할변수
+                 map_id = code,                     # 지역기준변수
+                 tooltip = name),                   # 지도위에표시할지역명
+             map = kormap1,                         # 지도데이터
+             interactive = T)                       # 인터랙티브
