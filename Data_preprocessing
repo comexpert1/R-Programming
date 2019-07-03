@@ -12,13 +12,12 @@ member
 
 a <-gather(member, key, value, namef:agem)                         # member 행렬중 namef ~ agem 까지 key, value로 행렬 생성
 a
-
 b <-separate(a,key, c("variable","type"), 1)                       # a의 value 를 variable, type 으로 구분  
 b
 b <-separate(a,key, c("variable","type"), 4)
 b
 b <-separate(a,key, c("variable","type"), -1)
-
+b
 new <- spread(b,variable,value)
 new
 
