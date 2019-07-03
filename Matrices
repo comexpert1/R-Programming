@@ -1,0 +1,61 @@
+a <- c(1, 2, 5.3, 6, -2, 4)            # numeric vector
+b <- c("one", "two", "three")          # character vector
+c <- c(TRUE, TRUE, TRUE, FALSE)        # logical vector    
+
+# Vector는 []로 접근 가능
+a[c(2,5)]                              # 2, 5번째 항목
+a
+b <- a[-2]                             # 2번째 항목 제외
+
+# 논리 벡터
+b <- c(T,T,F,F)
+b
+
+x <- -5:3                              # -5, -4, -3, -2, -1, 0, 1, 2, 3
+x
+
+w <- x < -2                            # -2보다 작으면 TRUE, 크면 FALSE
+w
+x
+y <- matrix(1:20, nrow=4, ncol=5)      # 4 x 5 행렬에 1~20 값 채우기
+y
+
+cells <- c(1,26,24,68)
+cells
+rnames <- c("R1", "R2")                # row 1, 26 과 column 24, 68 으로 행렬 만들기   
+cnames <- c("C1", "C2")       
+
+# byrow TRUE : matrix 내용을 row 우선으로 채움, byrow FALSE : matrix 내용을 column 우선으로 채움
+# dimnames : column 및 row에 대한 optional labels 지정
+mymatrix <- matrix(cells, nrow=2, ncol=2, byrow=TRUE, dimnames=list(rnames, cnames))
+mymatrix
+
+mymatrix[2,]                           # 2번째 row
+mymatrix[,1]                           # 1번째 column
+
+x = c(1:5)                             # 1,2,3,4,5 로 채움
+y = c(-1:-5)                           # -1, -2, -3, -4, -5 로 채움
+
+x
+y
+x+y
+
+t(x) %*% y
+x %*% t(x)
+
+# Array
+x <- array(1:8, c(2,2,2))
+x
+x[1,,]
+x[,,1]
+
+# List
+w <- list(name="aaa", mynumbers=a, mymatrix=y, age=5.3)
+w
+
+# Factor 예:20명의 "male(남)"rhk 30명 "femail(여)"을 가지는 gender라는 변수
+
+gender <- c(rep("mail",20), rep("female",30))
+gender <- factor(gender)
+gender
+summary(gender)
