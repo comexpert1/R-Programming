@@ -2,8 +2,8 @@
 # p = 1/n, n of die=6
 
 roll <- 1000
-n <- 6
-die <- ceiling(runif(roll)*n)                               #runif : 난수 발생 함수
+n <- 6                                                      # ceiling : x 보다 크거나 같은 정수 (반올림)
+die <- ceiling(runif(roll)*n)                               # runif : 난수 발생 함수
 b <- table(die)
 barplot(b)
 
