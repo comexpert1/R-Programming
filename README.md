@@ -1,2 +1,2 @@
-# eunjung
-R programming
+# R programming
+
