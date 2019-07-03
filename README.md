@@ -1,9 +1,13 @@
 # R programming
 
 
-R 및 R Studio 설치 • R – CRAN (Comprehensive R Archive Network) – http://www.cran.r-project.org – Base System : R 프로그램 – Package : R 함수, 데이터, 컴파일된 코드를 모아 놓은 것
+R 및 R Studio 설치 
+
+• R – CRAN (Comprehensive R Archive Network) – http://www.cran.r-project.org – Base System : R 프로그램 – Package : R 함수, 데이터, 컴파일된 코드를 모아 놓은 것
 
 • R Studio – R을 쉽게 사용할 수 있는 IDE 소프트웨어 – 프로그램 입력, 관리, 그래픽, 패키지 윈도우 – https://www.rstudio.com/products/rstudio/download
+
+
 
 R 사용자 인터페이스
 
